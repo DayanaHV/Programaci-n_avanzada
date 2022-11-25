@@ -23,7 +23,6 @@ st.subheader("Características del Dataset")
 st.write(c.describe())
 
 st.subheader('Relción de ') 
-
 url = 'https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid%20(3)%20(1).csv'
 datos = pd.read_csv(url,sep= ',')
 st.line_chart(data=datos, x='CLASIFICACION_DEF', y='DEPARTAMENTO')
