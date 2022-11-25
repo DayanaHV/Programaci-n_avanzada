@@ -19,11 +19,17 @@ st.dataframe(c)
 df=c
 
 st.sidebar.header("Entradas del usuario")
-año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
+año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,111))))
 filt=(df["EDAD_DECLARADA"]==año_seleccionado)
 df[filt]
 
 departamentos=["AMAZONAS","ANCASH","APURIMAC","AREQUIPA","AYACUCHO","CAJAMARCA","CALLAO","CUSCO","HUANCAVELICA","HUANUCO","ICA","JUNÍN","LA LIBERTAD","LAMBAYEQUE","LIMA","LORETO","MADRE DE DIOS","MOQUEGUA","PASCO","PIURA","PUNO","SAN MARTÍN","TACNA","TUMBES","UCAYALI"]
-año_seleccionado=st.sidebar.selectbox('Departamento',depa)
+depa_seleccionado=st.sidebar.multiselect('Departamentos',departamentos,departamentos)
 filt=(df["DEPARTAMENTO"]==depa_seleccionado)
 df[filt]
+
+sexo=["MASCULINO","FEMENINO]
+sexo_seleccionado=st.sidebar.selectbox('Sexo',sexo,sexo)
+filt=(df["DEPARTAMENTO"]==sexo_seleccionado)
+df[filt]
+
