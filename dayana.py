@@ -18,3 +18,6 @@ st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' c
 st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
+
+filt=(df["EDAD_DECLARADA"==año_seleccionado])
+df[filt]
