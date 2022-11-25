@@ -19,7 +19,4 @@ st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
 
-df=c
-filt=(df["EDAD_DECLARADA"]==año_seleccionado)
-df[filt]
 
