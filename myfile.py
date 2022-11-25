@@ -99,6 +99,7 @@ st.video(video_bytes)
 st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=vlzxSleRnmg")
 
 st.sidebar.header("Entradas del usuario")
+#Filtro edad
 año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
 df=c
 filt=(df["EDAD_DECLARADA"]==año_seleccionado)
@@ -110,3 +111,5 @@ df=c
 filt=(df["SEXO"]==sexo_seleccionado)
 df[filt]
 
+#Quien somos 
+st.write('**Quien somos:**') 
