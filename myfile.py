@@ -96,6 +96,7 @@ st.video(video_bytes)
 st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=vlzxSleRnmg")
 
 #-----------------------------------------------------------------------
+df = df.drop(columns = ["FECHA_CORTE","FECHA_FALLECIMIENTO","UBIGEO","UUID"])
 set_departamentos = np.sort(df['DEPARTAMENTO'].dropna().unique())
 #Seleccion del departamento
 opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
