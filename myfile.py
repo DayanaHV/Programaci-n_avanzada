@@ -82,7 +82,7 @@ st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
 
-st.subheader('Relaión provincia-edad_declrada') 
+st.subheader('Relación provincia-edad_declrada') 
 #url del archivo en formato raw
 url = 'https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid%20(3)%20(2).csv'
 datos = pd.read_csv(url,sep= ',')
