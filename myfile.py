@@ -5,6 +5,20 @@ import pandas as pd
 from PIL import Image
 import numpy as np
 
+#IMAGEN PORTADA
+imagen_portada = Image.open('imagenportada.jpg')
+st.image(imagen_portada)
+
+
+
+#INTRODUCCIÓN
+image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
+st.image(image_INTRODUCCION)
+
+st.markdown("""
+	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
+	* *Base de datos:* [MINAM-Ministerio de Salud del Perú (https://www.datosabiertos.gob.pe/dataset/fallecidos-por-covid-19-ministerio-de-salud-minsa).
+	""")
 st.header("DATA DE FALLECIDOS POR COVID-19")
 @st.experimental_memo
 def download_data():
@@ -22,32 +36,13 @@ st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
 
-st.subheader('Relción de ') 
-url = 'https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid%20(3)%20(1).csv'
-datos = pd.read_csv(url,sep= ',')
-st.line_chart(data=datos, x='CLASIFICACION_DEF', y='DEPARTAMENTO')
-
-
 
 #TITULO
 st.title('Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]')
 st.markdown("*PROYECTO FINAL PROGRAMACIÓN 2022-2*")
 st.write("------------------------------------------------------------------------------------------------")
 
-#IMAGEN PORTADA
-imagen_portada = Image.open('imagenportada.jpg')
-st.image(imagen_portada)
 
-
-
-#INTRODUCCIÓN
-image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
-st.image(image_INTRODUCCION)
-
-st.markdown("""
-	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
-	* *Base de datos:* [MINAM-Ministerio de Salud del Perú (https://www.datosabiertos.gob.pe/dataset/fallecidos-por-covid-19-ministerio-de-salud-minsa).
-	""")
 
 
 #CRITERIOS
@@ -102,7 +97,10 @@ video_bytes = video_file.read()
 st.video(video_bytes)
 st.write("*Fuente*: Clínica Alemana. (2020). https://www.youtube.com/watch?v=vlzxSleRnmg")
 
-
+st.subheader('Relción de ') 
+url = 'https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid%20(3)%20(1).csv'
+datos = pd.read_csv(url,sep= ',')
+st.line_chart(data=datos, x='CLASIFICACION_DEF', y='DEPARTAMENTO')
 
 
 
