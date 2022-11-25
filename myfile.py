@@ -103,6 +103,10 @@ año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
 df=c
 filt=(df["EDAD_DECLARADA"]==año_seleccionado)
 df[filt]
-
-
+#Filtro sexo
+sexxo=[MASCULINO,FEMENINO]
+sexo_seleccionado=st.sidebar.selectbox('SEXO',sexxo) ### Modificar parametro
+df=c
+filt=(df["SEXO"]==sexo_seleccionado)
+df[filt]
 
