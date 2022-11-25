@@ -22,9 +22,11 @@ st.sidebar.header("Entradas del usuario")
 año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,111))))
 filt=(df["EDAD_DECLARADA"]==año_seleccionado)
 df[filt]
+ 
+df=c
 
 sexo=["MASCULINO","FEMENINO"]
-sexo_seleccionado=st.sidebar.selectbox("Sexo",sexo,sexo)
+sexo_seleccionado=st.sidebar.multiselect("Sexo",sexo,sexo)
 filt=(df["SEXO"]==sexo_seleccionado)
 df[filt]
 
