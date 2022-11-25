@@ -5,7 +5,7 @@ import numpy as np
 import altair as alt
 
 st.sidebar.header("Entradas del usuario")
-año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,117))))
+año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
 
 st.header("Conjunto de datos FALLECIDOS COVID")
 
@@ -19,11 +19,11 @@ c=download_data()
 st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' columnas')
 st.dataframe(c)
 
-df=c
-filt=(df["EDAD_DECLARADA"]==año_seleccionado)
-df[filt]
+#df=c
+#filt=(df["EDAD_DECLARADA"]==año_seleccionado)
+#df[filt]
 
 depa=["AMAZONAS","ANCASH","APURIMAC","AREQUIPA","AYACUCHO","CAJAMARCA","CALLAO","CUSCO","HUANCAVELICA","HUANUCO","ICA","JUNÍN","LA LIBERTAD","LAMBAYEQUE","LIMA","LORETO","MADRE DE DIOS","MOQUEGUA","PASCO","PIURA","PUNO","SAN MARTÍN","TACNA","TUMBES","UCAYALI"]
-depa_seleccionado=st.sidebar.multiselect('Departamento',depa,depa)
+depa_seleccionado=st.sidebar.multiselect('Departamento',depa)
 filt=(df["DEPARTAMENTO"]==depa_seleccionado)
 df[filt]
