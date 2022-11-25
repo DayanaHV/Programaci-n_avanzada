@@ -5,20 +5,47 @@ import pandas as pd
 from PIL import Image
 import numpy as np
 
+st.header("DATA DE FALLECIDOS POR COVID-19")
+@st.experimental_memo
+def download_data():
+   url="http://server01.labs.org.pe:2005/fallecidos_covid.csv"
+   filename="DataSet de Fallecidos por COVID-19 - [Ministerio de Salud - MINSA].csv"
+   urllib.request.urlretrieve(url,filename)
+   df=pd.read_csv('DataSet de Fallecidos por COVID-19 - [Ministerio de Salud - MINSA].csv')
+   return df
+
+c=download_data()
+st.write('**Dimensiones de la tabla:**') 
+st.write('* Fila: ' + str(c.shape[0]))
+st.write('* Columnas: ' + str(c.shape[1]))
+st.dataframe(c)
+
+st.subheader("Características del Dataset")
+st.write(c.describe())
+
+st.title('Contaminantes') 
+
+url = 'https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid%20(3)%20(2).csv'
+datos = pd.read_csv(url,sep= ',')
+st.line_chart(data=datos, x='FECHA_UTC', y='MAGNITUD')
+
+
 
 
 #TITULO
 st.title('Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]')
-st.write("------------------------------------------------------------------------------------------------")
 st.markdown("**PROYECTO FINAL PROGRAMACIÓN 2022-2**")
-
-#INTRODUCCIÓN
-image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
-st.image(image_INTRODUCCION)
+st.write("------------------------------------------------------------------------------------------------")
 
 #IMAGEN PORTADA
 imagen_portada = Image.open('imagenportada.jpg')
 st.image(imagen_portada)
+
+
+
+#INTRODUCCIÓN
+image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
+st.image(image_INTRODUCCION)
 
 st.markdown("""
 	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
@@ -70,23 +97,6 @@ st.markdown("""
 st.markdown("""
 	* **DISTRITO:** Distrito donde reside la persona fallecida.
 	""")
-st.header("DATA FALLECIDOS COVID")
-@st.experimental_memo
-def download_data():
-   url="https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid.csv"
-   df=pd.read_csv("fallecidos_covid.csv")
-   return df
-c=download_data()
-st.write('Dimensiones: ' + str(c.shape[0]) + ' filas y ' + str(c.shape[1]) + ' columnas')
-st.dataframe(c)
-st.subheader("Características del Dataset")
-st.write(c.describe())
-
-st.subheader('Relación provincia-edad_declrada') 
-#url del archivo en formato raw
-url = 'https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid%20(3)%20(2).csv'
-datos = pd.read_csv(url,sep= ',')
-st.line_chart(data=datos, x='CLASIFICACION_DEF', y='DEPARTAMENTO')
 
 #VIDEO DE YOUTUBE
 st.subheader("**VIDEO INFORMATIVO DE LA PROBLEMATICA**")    
@@ -95,13 +105,8 @@ video_bytes = video_file.read()
 st.video(video_bytes)
 st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=vlzxSleRnmg")
 
-#-----------------------------------------------------------------------
-df = df.drop(columns = ["FECHA_CORTE","FECHA_FALLECIMIENTO","UBIGEO","UUID"])
-set_departamentos = np.sort(df['DEPARTAMENTO'].dropna().unique())
-#Seleccion del departamento
-opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
-df_departamentos = df[df['DEPARTAMENTO'] == opcion_departamento]
-num_filas = len(df_departamentos.axes[0]) 
-#Gráficas
+
+
+
 
 
