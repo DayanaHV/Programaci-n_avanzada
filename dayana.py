@@ -28,8 +28,8 @@ depa_seleccionado=st.sidebar.multiselect('Departamentos',departamentos,departame
 filt=(df["DEPARTAMENTO"]==depa_seleccionado)
 df[filt]
 
-sexo=["MASCULINO","FEMENINO]
-sexo_seleccionado=st.sidebar.selectbox('Sexo',sexo,sexo)
+sexo=["MASCULINO","FEMENINO"]
+sexo_seleccionado=st.sidebar.selectbox("Sexo",sexo,sexo)
 filt=(df["DEPARTAMENTO"]==sexo_seleccionado)
 df[filt]
 
