@@ -23,7 +23,7 @@ año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
 filt=(df["EDAD_DECLARADA"]==año_seleccionado)
 df[filt]
 
-depa=["AMAZONAS","ANCASH","APURIMAC","AREQUIPA","AYACUCHO","CAJAMARCA","CALLAO","CUSCO","HUANCAVELICA","HUANUCO","ICA","JUNÍN","LA LIBERTAD","LAMBAYEQUE","LIMA","LORETO","MADRE DE DIOS","MOQUEGUA","PASCO","PIURA","PUNO","SAN MARTÍN","TACNA","TUMBES","UCAYALI"]
-año_seleccionado=st.sidebar.selectbox('Edad',depa)
+departamentos=["AMAZONAS","ANCASH","APURIMAC","AREQUIPA","AYACUCHO","CAJAMARCA","CALLAO","CUSCO","HUANCAVELICA","HUANUCO","ICA","JUNÍN","LA LIBERTAD","LAMBAYEQUE","LIMA","LORETO","MADRE DE DIOS","MOQUEGUA","PASCO","PIURA","PUNO","SAN MARTÍN","TACNA","TUMBES","UCAYALI"]
+año_seleccionado=st.sidebar.selectbox('Departamento',depa)
 filt=(df["DEPARTAMENTO"]==depa_seleccionado)
 df[filt]
