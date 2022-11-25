@@ -86,7 +86,7 @@ st.subheader('Relaión provincia-edad_declrada')
 #url del archivo en formato raw
 url = 'https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid%20(3)%20(2).csv'
 datos = pd.read_csv(url,sep= ',')
-st.line_chart(data=datos, x='CLASIFICACION_DEF', y='EDAD_DECLARADA')
+st.line_chart(data=datos, x='CLASIFICACION_DEF', y='DEPARTAMENTO')
 
 #VIDEO DE YOUTUBE
 st.subheader("**VIDEO INFORMATIVO DE LA PROBLEMATICA**")    
