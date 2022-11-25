@@ -26,7 +26,7 @@ df[filt]
 df=c
 
 sexo=["MASCULINO","FEMENINO"]
-sexo_seleccionado=st.sidebar.multiselect("Sexo",sexo,sexo)
+sexo_seleccionado=st.sidebar.multiselect("Sexo",sexo)
 filt=(df["SEXO"]==sexo_seleccionado)
 df[filt]
 
