@@ -150,48 +150,6 @@ st.subheader(str(selec_departamento))
 #-----------------------------------------------------------------------------------------------
 
 
-sel_year=st.selectbox('Evaluación de contaminantes por año', list(reversed(range(2010,2021))))
-data_ano=load_data(str(sel_year))
-df_sel=data_ano[data_ano['ESTACION'].isin([selec_ditrit])]
-
-datos=df_sel.groupby(['MES']).agg({"PM 10": 'mean', "PM 2.5": 'mean', "SO2": 'mean', "NO2": 'mean', "O3": 'mean', "CO": 'mean'})
-#datos.reset_index(inplace=True)
-#c=alt.Chart(datos, title='DISTRITO:'+" "+' '.join(selected_district)).mark_line().encode(x='MES', y='ppm:Q')
-data = datos.reset_index().melt('MES')
-data.rename(columns={'variable':'contaminante', 'value':'ppm'}, inplace=True)
-
-
-
-
-
-
-
-
-
-
-
-st.header('Si no recuerdan la edad coloquen un rango')	
-minYear = st.selectbox('Desde', list(range(0,110)))
-maxYear = st.selectbox('Hasta', list(reversed(range(0,110))))
-
-anios = st.button('Gráfico entre años')
-
-
-
-
-
-
-
-################------------------------------------------------------------------------------
-#df=c
-#filt=(df["EDAD_DECLARADA"]==año_seleccionado)
-#df[filt]
-#Filtro sexo
-#sexxo=[MASCULINO,FEMENINO]
-#sexo_seleccionado=st.sidebar.selectbox('SEXO',sexxo) ### Modificar parametro
-#df=c
-#filt=(df["SEXO"]==sexo_seleccionado)
-#df[filt]
 
 
 #Quien somos 
