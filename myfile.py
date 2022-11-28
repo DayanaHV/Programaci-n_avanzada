@@ -141,19 +141,19 @@ st.dataframe(data)
 #----------------------------------------------------------------------------------------------
 				
 lsta_clasificación=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
-distrits_names = pd.unique(df["DISTRITO"])
+distrits_names = pd.unique(df["DEPARTAMENTO"])
 
-st.header('Evaluación de clasificación por distrito')
-selec_ditrit = st.selectbox('Evaluación de contaminates por distrito', distrits_names)
-st.subheader("Distrito seleccionado:")
-st.subheader(str(selec_ditrit))
+st.header('Evaluación de clasificación por departamento')
+selec_departamento = st.selectbox('Evaluación de contaminates por distrito', depatamento_names)
+st.subheader("Departamento seleccionado:")
+st.subheader(str(selec_departamento))
 
-grouped_g2 = df.groupby(df.DISTRITO)
-distrito = grouped_g2.get_group(selec_ditrit)
-fecha = list(distrito.iloc[0,range(2,5)])
+grouped_g2 = df.groupby(df.DEPARTAMENTO)
+departamento = grouped_g2.get_group(selec_departamento)
+fecha = list(departamento.iloc[0,range(2,5)])
 fecha_ini = str(fecha[0])+'/'+str(int(fecha[1]))+'/'+str(int(fecha[2]))
 
-rango = int(list(distrito.shape)[0])
+rango = int(list(departamento.shape)[0])
 index = pd.date_range(start=fecha_ini, periods=rango, freq='60T')
 
 
