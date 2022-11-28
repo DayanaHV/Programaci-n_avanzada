@@ -8,15 +8,16 @@ import numpy as np
 #TITULO
 st.title('Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]')
 st.markdown("**PROYECTO FINAL PROGRAMACIÓN 2022-2**")
+#INTRODUCCIÓN
+image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
+st.image(image_INTRODUCCION)
 st.write("------------------------------------------------------------------------------------------------")
 
 #IMAGEN PORTADA
 imagen_portada = Image.open('imagenportada.jpg')
 st.image(imagen_portada)
 
-#INTRODUCCIÓN
-image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
-st.image(image_INTRODUCCION)
+
 
 st.markdown("""
 	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
