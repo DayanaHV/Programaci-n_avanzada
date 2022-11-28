@@ -117,7 +117,7 @@ def load_data(year):
 data_by_year=load_data(str(año_seleccionado))
 
 sorted_unique_departamento = sorted(data_by_year.DEPARTAMENTO.unique())
-selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_district, sorted_unique_district)
+selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_departamento, sorted_unique_departamento)
 
 unique_clasificacion=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
 selected_clasificación=st.sidebar.multiselect('Clasificación', unique_clasificacion, unique_clasificacion)
