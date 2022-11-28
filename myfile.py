@@ -100,9 +100,30 @@ video_bytes = video_file.read()
 st.video(video_bytes)
 st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=vlzxSleRnmg")
 
+#ENTRADA DEL USUARIO
 st.sidebar.header("Entradas del usuario")
 #Filtro edad
 año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
+
+def load_data(year):
+	df = download_data()
+	df=df.astype({'EDAD_DECLARADA':'str'})
+	df['FECHA_CORTE'] = pd.to_numeric(df['FECHA_CORTE'])
+	df['FECHA_FALLECIMIENTO'] = pd.to_numeric(df['FECHA_FALLECIMIENTO'])
+	df['UUID'] = pd.to_numeric(df['UUID'])
+	grouped = df.groupby(df.EDAD_DECLARADA)
+	df_year = grouped.get_group(year)
+	return df_year
+data_by_year=load_data(str(selected_year))
+
+sorted_unique_departamento = sorted(data_by_year.DEPARTAMENTO.unique())
+selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_district, sorted_unique_district)
+
+
+
+
+
+
 df=c
 filt=(df["EDAD_DECLARADA"]==año_seleccionado)
 df[filt]
