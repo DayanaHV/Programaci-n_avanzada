@@ -105,29 +105,29 @@ st.sidebar.header("Entradas del usuario")
 #Filtro edad
 año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
-def load_data(year):
+def load_data(edad):
 	df = download_data()
 	df=df.astype({'EDAD_DECLARADA':'str'})
 	df['FECHA_CORTE'] = pd.to_numeric(df['FECHA_CORTE'])
 	df['FECHA_FALLECIMIENTO'] = pd.to_numeric(df['FECHA_FALLECIMIENTO'])
 	df['UUID'] = pd.to_numeric(df['UUID'])
 	grouped = df.groupby(df.EDAD_DECLARADA)
-	df_year = grouped.get_group(year)
-	return df_year
-data_by_year=load_data(str(año_seleccionado))
+	df_edad = grouped.get_group(edad)
+	return df_edad
 
-sorted_unique_departamento = sorted(data_by_year.DEPARTAMENTO.unique())
+data_año=load_data(str(año_seleccionado))
+sorted_unique_departamento = sorted(data_año.DEPARTAMENTO.unique())
 selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_departamento, sorted_unique_departamento)
 
-unique_clasificacion=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
-selected_clasificacion=st.sidebar.multiselect('Clasificación', unique_clasificacion, unique_clasificacion)
+unique_data=['FECHA_CORTE', 'FECHA_FALLECIMIENTO', 'UUID']
+selected_data=st.sidebar.multiselect('Clasificación', unique_data, unique_data)
 
-df_selected=data_by_year[(data_by_year.DEPARTAMENTO.isin(selected_departamento))]
+df_selected=data_año[(data_año.DEPARTAMENTO.isin(selected_departamento))]
 
 def remove_columns(dataset, cols):
 	return dataset.drop(cols, axis=1)
 
-cols=np.setdiff1d(unique_clasificacion, selected_clasificacion)
+cols=np.setdiff1d(unique_data, selected_data)
 
 st.subheader('Mostrar data de distrito(s) y clasificacion(s) seleccionado(s)')
 data=remove_columns(df_selected, cols)
@@ -136,15 +136,15 @@ st.dataframe(data)
 
 
 ################------------------------------------------------------------------------------
-df=c
-filt=(df["EDAD_DECLARADA"]==año_seleccionado)
-df[filt]
+#df=c
+#filt=(df["EDAD_DECLARADA"]==año_seleccionado)
+#df[filt]
 #Filtro sexo
-sexxo=[MASCULINO,FEMENINO]
-sexo_seleccionado=st.sidebar.selectbox('SEXO',sexxo) ### Modificar parametro
-df=c
-filt=(df["SEXO"]==sexo_seleccionado)
-df[filt]
+#sexxo=[MASCULINO,FEMENINO]
+#sexo_seleccionado=st.sidebar.selectbox('SEXO',sexxo) ### Modificar parametro
+#df=c
+#filt=(df["SEXO"]==sexo_seleccionado)
+#df[filt]
 
 #Quien somos 
 st.write('**Quien somos:**') 
