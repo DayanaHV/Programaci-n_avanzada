@@ -104,7 +104,7 @@ st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=
 st.sidebar.header("Entradas del usuario")
 #Filtro edad
 año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
-
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------
 def load_data(year):
 	df = download_data()
 	df=df.astype({'EDAD_DECLARADA':'str'})
@@ -120,13 +120,22 @@ sorted_unique_departamento = sorted(data_by_year.DEPARTAMENTO.unique())
 selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_departamento, sorted_unique_departamento)
 
 unique_clasificacion=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
-selected_clasificación=st.sidebar.multiselect('Clasificación', unique_clasificacion, unique_clasificacion)
+selected_clasificacion=st.sidebar.multiselect('Clasificación', unique_clasificacion, unique_clasificacion)
 
-df_selected=data_by_year[(data_by_year.ESTACION.isin(año_seleccionado))]
+df_selected=data_by_year[(data_by_year.DEPARTAMENTO.isin(año_seleccionado))]
+
+def remove_columns(dataset, cols):
+	return dataset.drop(cols, axis=1)
+
+cols=np.setdiff1d(unique_clasificacion, selected_clasificacion)
+
+st.subheader('Mostrar data de distrito(s) y clasificacion(s) seleccionado(s)')
+data=remove_columns(df_selected, cols)
+st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
+st.dataframe(data)
 
 
-
-
+################------------------------------------------------------------------------------
 df=c
 filt=(df["EDAD_DECLARADA"]==año_seleccionado)
 df[filt]
