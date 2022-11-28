@@ -5,26 +5,6 @@ import pandas as pd
 from PIL import Image
 import numpy as np
 
-st.header("DATA DE FALLECIDOS POR COVID-19")
-@st.experimental_memo
-def download_data():
-   url="https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid.csv"
-   df=pd.read_csv("fallecidos_covid.csv")
-   return df
-
-c=download_data()
-st.write('**Dimensiones de la tabla:**') 
-st.write('* Fila: ' + str(c.shape[0]))
-st.write('* Columnas: ' + str(c.shape[1]))
-st.dataframe(c)
-
-st.subheader("Características del Dataset")
-st.write(c.describe())
-
-
-
-
-
 #TITULO
 st.title('Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]')
 st.markdown("**PROYECTO FINAL PROGRAMACIÓN 2022-2**")
@@ -33,8 +13,6 @@ st.write("----------------------------------------------------------------------
 #IMAGEN PORTADA
 imagen_portada = Image.open('imagenportada.jpg')
 st.image(imagen_portada)
-
-
 
 #INTRODUCCIÓN
 image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
@@ -90,6 +68,25 @@ st.markdown("""
 st.markdown("""
 	* **DISTRITO:** Distrito donde reside la persona fallecida.
 	""")
+
+st.header("DATA DE FALLECIDOS POR COVID-19")
+@st.experimental_memo
+def download_data():
+   url="https://raw.githubusercontent.com/DayanaHV/Programaci-n_avanzada/main/fallecidos_covid.csv"
+   df=pd.read_csv("fallecidos_covid.csv")
+   return df
+
+c=download_data()
+st.write('**Dimensiones de la tabla:**') 
+st.write('* Fila: ' + str(c.shape[0]))
+st.write('* Columnas: ' + str(c.shape[1]))
+st.dataframe(c)
+
+st.subheader("Características del Dataset")
+st.write(c.describe())
+
+
+
 
 #VIDEO DE YOUTUBE
 st.subheader("**VIDEO INFORMATIVO DE LA PROBLEMATICA**")    
