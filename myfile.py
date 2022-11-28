@@ -139,7 +139,10 @@ st.dataframe(data)
 #NO MODIFIQUEN NADAAAAAAAAAAAA HASTA AQUI NADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 #----------------------------------------------------------------------------------------------
-distrits_names = pd.unique(df_edad["DEPARTAMENTO"])
+df = download_data()		
+distrits_names = pd.unique(df["DEPARTAMENTO"])		
+lsta_conta=['PM 10', 'PM 2.5', 'SO2', 'NO2', 'O3', 'CO']
+
 				
 lsta_clasificación=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
 
