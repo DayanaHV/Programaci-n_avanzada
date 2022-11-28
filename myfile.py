@@ -103,7 +103,7 @@ st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=
 #ENTRADA DEL USUARIO
 st.sidebar.header("Entradas del usuario")
 #Filtro edad
-año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
+año_seleccionado=st.sidebar.selectbox('Edad_declarada', list(reversed(range(0,110))))
 #---------------------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
