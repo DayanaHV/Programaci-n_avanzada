@@ -114,12 +114,15 @@ def load_data(year):
 	grouped = df.groupby(df.EDAD_DECLARADA)
 	df_year = grouped.get_group(year)
 	return df_year
-data_by_year=load_data(str(selected_year))
+data_by_year=load_data(str(año_seleccionado))
 
 sorted_unique_departamento = sorted(data_by_year.DEPARTAMENTO.unique())
 selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_district, sorted_unique_district)
 
+unique_clasificacion=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
+selected_clasificación=st.sidebar.multiselect('Clasificación', unique_clasificacion, unique_clasificacion)
 
+df_selected=data_by_year[(data_by_year.ESTACION.isin(año_seleccionado))]
 
 
 
