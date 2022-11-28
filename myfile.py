@@ -147,15 +147,26 @@ st.header('Evaluación de clasificación por departamento')
 selec_departamento= st.selectbox('Evaluación por departamento', departamento_names)
 st.subheader("Departamento seleccionado:")
 st.subheader(str(selec_departamento))
+#-----------------------------------------------------------------------------------------------
+cont_distrito = distrito.iloc[:,6:].set_index(index)
+#series = pd.Series(, index = index) 
+#series
+fecha_i = index[0]
+fecha_f = index[-1]
 
-grouped_g2 = df.groupby(df.DEPARTAMENTO)
-departamento = grouped_g2.get_group(selec_departamento)
-fecha = list(departamento.iloc[0,range(2,5)])
-fecha_ini = str(fecha[0])+'/'+str(int(fecha[1]))+'/'+str(int(fecha[2]))
 
-rango = int(list(departamento.shape)[0])
-index = pd.date_range(start=fecha_ini, periods=rango, freq='60T')
+st.subheader("Gráficos interactivos")
+st.line_chart(cont_distrito)
 
+
+cont_distrito = distrito.iloc[:,6:].set_index(index)
+fecha_i = index[0]
+fecha_f = index[-1]
+st.subheader("Data del monitoreo de contaminates del distrito seleccionado") 
+st.dataframe(cont_distrito)
+
+st.subheader("Gráficos interactivos")
+st.line_chart(cont_distrito)
 
 
 
