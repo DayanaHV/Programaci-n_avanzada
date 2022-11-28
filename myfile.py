@@ -148,25 +148,18 @@ selec_departamento= st.selectbox('Evaluación por departamento', departamento_na
 st.subheader("Departamento seleccionado:")
 st.subheader(str(selec_departamento))
 #-----------------------------------------------------------------------------------------------
-cont_distrito = distrito.iloc[:,6:].set_index(index)
-#series = pd.Series(, index = index) 
-#series
-fecha_i = index[0]
-fecha_f = index[-1]
 
 
-st.subheader("Gráficos interactivos")
-st.line_chart(cont_distrito)
+sel_year=st.selectbox('Evaluación de contaminantes por año', list(reversed(range(2010,2021))))
+data_ano=load_data(str(sel_year))
+df_sel=data_ano[data_ano['ESTACION'].isin([selec_ditrit])]
 
+datos=df_sel.groupby(['MES']).agg({"PM 10": 'mean', "PM 2.5": 'mean', "SO2": 'mean', "NO2": 'mean', "O3": 'mean', "CO": 'mean'})
+#datos.reset_index(inplace=True)
+#c=alt.Chart(datos, title='DISTRITO:'+" "+' '.join(selected_district)).mark_line().encode(x='MES', y='ppm:Q')
+data = datos.reset_index().melt('MES')
+data.rename(columns={'variable':'contaminante', 'value':'ppm'}, inplace=True)
 
-cont_distrito = distrito.iloc[:,6:].set_index(index)
-fecha_i = index[0]
-fecha_f = index[-1]
-st.subheader("Data del monitoreo de contaminates del distrito seleccionado") 
-st.dataframe(cont_distrito)
-
-st.subheader("Gráficos interactivos")
-st.line_chart(cont_distrito)
 
 
 
