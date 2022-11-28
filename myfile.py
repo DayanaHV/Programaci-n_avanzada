@@ -139,6 +139,33 @@ st.dataframe(data)
 #NO MODIFIQUEN NADAAAAAAAAAAAA HASTA AQUI NADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 #----------------------------------------------------------------------------------------------
+				
+lsta_clasificación=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
+distrits_names = pd.unique(df["DISTRITO"])
+
+st.header('Evaluación de clasificación por distrito')
+selec_ditrit = st.selectbox('Evaluación de contaminates por distrito', distrits_names)
+st.subheader("Distrito seleccionado:")
+st.subheader(str(selec_ditrit))
+
+grouped_g2 = df.groupby(df.DISTRITO)
+distrito = grouped_g2.get_group(selec_ditrit)
+fecha = list(distrito.iloc[0,range(2,5)])
+fecha_ini = str(fecha[0])+'/'+str(int(fecha[1]))+'/'+str(int(fecha[2]))
+
+rango = int(list(distrito.shape)[0])
+index = pd.date_range(start=fecha_ini, periods=rango, freq='60T')
+
+
+
+
+
+
+
+
+
+
+
 st.header('Si no recuerdan la edad coloquen un rango')	
 minYear = st.selectbox('Desde', list(range(0,110)))
 maxYear = st.selectbox('Hasta', list(reversed(range(0,110))))
