@@ -105,63 +105,7 @@ st.sidebar.header("Entradas del usuario")
 #Filtro edad
 año_seleccionado=st.sidebar.selectbox('Edad', list(reversed(range(0,110))))
 #---------------------------------------------------------------------------------------------------
-import streamlit as st
-import pandas as pd
-import numpy as np
-from datetime import time
-import datetime
-import matplotlib.pyplot as plt
-import gdown
-import os
 
-if not os.path.exists('fallecidoscovid'):
-  os.makedirs('fallecidoscovid')
-   
-@st.experimental_memo
-def fallecidoscovid_data():
-  #https://drive.google.com/uc?id=
-  url = "https://drive.google.com/file/d/14k9oR7aTkYhd2tVqIfOBEDANZH66Im9_/view?usp=share_link"
-  output = "fallecidoscovid/data.csv"
-  gdown.fallecidoscovid(url,output,quiet = False)
-  
-fallecidoscovid_data()
-df = pd.read_csv("fallecidoscovid/data.csv", sep = ";", parse_dates = ["FECHA_FALLECIMIENTOS])
-#Simplificacion del dataset (retiro de columnas)
-df = df.drop(columns = ["FECHA_FALLECIMIENTO","UBIGEO","UUID"])
-
-#Construccion del set/list de departamentos (Valores unicos sin NA)
-set_departamentos = np.sort(df['DEPARTAMENTO'].dropna().unique())
-#Seleccion del departamento
-opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
-df_departamentos = df[df['DEPARTAMENTO'] == opcion_departamento]
-num_filas = len(df_departamentos.axes[0]) 
-
-#Construccion del set/list de provincias (Valores unicos sin NA)
-set_provincias = np.sort(df_departamentos['PROVINCIA'].dropna().unique())
-#Seleccion de la provincia
-opcion_provincia = st.selectbox('Selecciona una provincia', set_provincias)
-df_provincias = df_departamentos[df_departamentos['PROVINCIA'] == opcion_provincia]
-num_filas = len(df_provincias.axes[0]) 
-
-#Construccion del set/list de distritos (Valores unicos sin NA)
-set_distritos = np.sort(df_departamentos['DISTRITO'].dropna().unique())
-#Seleccion de la distrito
-opcion_distrito = st.selectbox('Selecciona un distrito', set_distritos)
-df_distritos = df_departamentos[df_departamentos['DISTRITO'] == opcion_distrito]
-num_filas = len(df_distritos.axes[0]) 
-
-st.write('Numero de registros:', num_filas)
-
-#Gráficas
-#Gráfica de barras de SEXO
-df_SEXO = df_distritos.SEXO.value_counts()
-st.write('Distribución por SEXO:')
-st.bar_chart(df_SEXO)
-
-#Gráfica de barras de EDAD
-df_edad = df_distritos.EDAD.value_counts()
-st.write('Distribución por EDAD:')
-st.bar_chart(df_edad)
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------
 def load_data(edad):
 	df = download_data()
@@ -195,7 +139,11 @@ st.dataframe(data)
 #NO MODIFIQUEN NADAAAAAAAAAAAA HASTA AQUI NADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 #----------------------------------------------------------------------------------------------
+st.header('Si no recuerdan la edad coloquen un rango')	
+minYear = st.selectbox('Desde', list(range(0,110)))
+maxYear = st.selectbox('Hasta', list(reversed(range(0,110))))
 
+anios = st.button('Gráfico entre años')
 
 
 
