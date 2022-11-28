@@ -122,7 +122,7 @@ selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_depar
 unique_clasificacion=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
 selected_clasificacion=st.sidebar.multiselect('Clasificación', unique_clasificacion, unique_clasificacion)
 
-df_selected=data_by_year[(data_by_year.DEPARTAMENTO.isin(año_seleccionado))]
+df_selected=data_by_year[(data_by_year.DEPARTAMENTO.isin(selected_departamento))]
 
 def remove_columns(dataset, cols):
 	return dataset.drop(cols, axis=1)
