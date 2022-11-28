@@ -149,7 +149,40 @@ st.subheader("Departamento seleccionado:")
 st.subheader(str(selec_departamento))
 #-----------------------------------------------------------------------------------------------
 
-
+if st.sidebar.button("¿Quiénes somos?"):
+	st.header("¿Quiénes somos?")
+	st.write("Somos un grupo de estudiantes de V ciclo de Ingeniería de la Universidad Peruano Cayetano Heredia (UPCH). Nos apasiona el procesamiento y visualización de datos medioambientales que puedan ayudar al público general a comprender mejor el problema de la contaminación del aire.")
+	
+	col1, col2, col3, col4 = st.columns(4)
+	image1 = Image.open('   ')
+	col1.header("ELIZABETH CHAVEZ")
+	col1.image(image1, use_column_width=True)
+	grayscale = image1.convert('LA')
+	col2.image(grayscale, use_column_width=True)
+	image2 = Image.open('    ')
+	col3.header("ANDREA ALBUJAR")
+	col3.image(image2, use_column_width=True)
+	grayscale = image2.convert('LA')
+	col4.image(grayscale, use_column_width=True)
+	
+	col5, col6, col7, col8 = st.columns(4)
+	image3 = Image.open('')
+	col5.header("SEBASTIAN ")
+	col5.image(image3, use_column_width=True)
+	grayscale = image3.convert('LA')
+	col6.image(grayscale, use_column_width=True)
+	image4 = Image.open(' ')
+	col7.header("DAYANA ")
+	col7.image(image4, use_column_width=True)
+	grayscale = image4.convert('LA')
+	col8.image(grayscale, use_column_width=True)
+	
+	col9, col10 = st.columns(2)
+	image5 = Image.open('')
+	col9.header("ANGELA VILLANUEVA")
+	col9.image(image5, use_column_width=True)
+	grayscale = image5.convert('LA')
+	col10.image(grayscale, use_column_width=True)
 
 
 #Quien somos 
