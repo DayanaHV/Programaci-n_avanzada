@@ -140,16 +140,19 @@ st.dataframe(data)
 
 #----------------------------------------------------------------------------------------------
 df = download_data()		
-distrits_names = pd.unique(df["DEPARTAMENTO"])		
-lsta_conta=['PM 10', 'PM 2.5', 'SO2', 'NO2', 'O3', 'CO']
-
-				
-lsta_clasificación=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
+departamento_names = pd.unique(df["DEPARTAMENTO"])						
+lista_clasificación=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
 
 st.header('Evaluación de clasificación por departamento')
 selec_departamento = st.selectbox('Evaluación de contaminates por distrito', depatamento_names)
 st.subheader("Departamento seleccionado:")
 st.subheader(str(selec_departamento))
+
+
+
+
+
+
 
 grouped_g2 = df.groupby(df.DEPARTAMENTO)
 departamento = grouped_g2.get_group(selec_departamento)
