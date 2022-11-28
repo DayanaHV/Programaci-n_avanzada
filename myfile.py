@@ -148,12 +148,6 @@ selec_departamento= st.selectbox('Evaluación por departamento', departamento_na
 st.subheader("Departamento seleccionado:")
 st.subheader(str(selec_departamento))
 
-
-
-
-
-
-
 grouped_g2 = df.groupby(df.DEPARTAMENTO)
 departamento = grouped_g2.get_group(selec_departamento)
 fecha = list(departamento.iloc[0,range(2,5)])
