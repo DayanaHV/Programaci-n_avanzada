@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 #TITULO
 st.title('Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]')
