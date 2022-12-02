@@ -106,6 +106,38 @@ opcion_provincia = st.selectbox('Selecciona una provincia', set_provincias)
 df_provincias = df_departamentos[df_departamentos['PROVINCIA'] == opcion_provincia]
 num_filas = len(df_provincias.axes[0]) 
 
+set_distritos = np.sort(df_departamentos['DISTRITO'].dropna().unique())
+#Seleccion de la distrito
+opcion_distrito = st.selectbox('Selecciona un distrito', set_distritos)
+df_distritos = df_departamentos[df_departamentos['DISTRITO'] == opcion_distrito]
+num_filas = len(df_distritos.axes[0]) 
+
+st.write('Numero de registros:', num_filas)
+
+#Gráficas
+
+#Gráfica de pie de METODODX
+df_metododx = df_distritos.METODODX.value_counts()
+df_metododx = pd.DataFrame(df_metododx)
+df_metododx = df_metododx.reset_index()  
+df_metododx.columns = ['SEXO', 'Total']
+
+fig1, ax1 = plt.subplots()
+ax1.pie(df_metododx['Total'], labels=df_metododx['METODODX'], autopct='%1.1f%%')
+ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+st.write('Distribución por METODODX:')
+st.pyplot(fig1)
+
+#Gráfica de barras de SEXO
+df_SEXO = df_distritos.SEXO.value_counts()
+st.write('Distribución por SEXO:')
+st.bar_chart(df_SEXO)
+
+#Gráfica de barras de EDAD
+df_edad = df_distritos.EDAD.value_counts()
+st.write('Distribución por EDAD:')
+st.bar_chart(df_edad)
+
 st.write("------------------------------------------------------------------------------------------------------------------------------------")
 #------------------------------------------------------------------------------------------------------------------------------------
 #VIDEO DE YOUTUBE
