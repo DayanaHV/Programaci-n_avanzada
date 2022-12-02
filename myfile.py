@@ -123,9 +123,9 @@ df_SEXO = df_SEXO.reset_index()
 df_SEXO.columns = ['SEXO', 'Total']
 
 fig1, ax1 = plt.subplots()
-ax1.pie(df_metododx['Total'], labels=df_metododx['METODODX'], autopct='%1.1f%%')
-ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-st.write('Distribución por METODODX:')
+ax1.pie(df_metododx['Total'], labels=df_SEXO['SEXO'], autopct='%1.1f%%')
+ax1.axis('equal')  
+st.write('Distribución por SEXO:')
 st.pyplot(fig1)
 
 #Gráfica de barras de SEXO
