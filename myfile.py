@@ -138,15 +138,6 @@ st.dataframe(data)
 
 #NO MODIFIQUEN NADAAAAAAAAAAAA HASTA AQUI NADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
-#----------------------------------------------------------------------------------------------
-df = download_data()		
-departamento_names = pd.unique(df["DEPARTAMENTO"])						
-lista_clasificación=['Criterio virolÃ³gico', 'Criterio SINADEF', 'Criterio clÃ­nico', 'Criterio nexo epidemiolÃ³gico', 'Criterio investigaciÃ³n EpidemiolÃ³gica', 'Criterio radiolÃ³gico', 'Criterio serolÃ³gico']
-
-st.header('Evaluación de clasificación por departamento')
-selec_departamento= st.selectbox('Evaluación por departamento', departamento_names)
-st.subheader("Departamento seleccionado:")
-st.subheader(str(selec_departamento))
 #-----------------------------------------------------------------------------------------------
 st.write("------------------------------------------------------------------------------------------------------------------------------------")
 
