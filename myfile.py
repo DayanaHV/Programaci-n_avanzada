@@ -213,7 +213,7 @@ if st.sidebar.button("¿Quiénes somos?"):
 	col8.image(grayscale, use_column_width=True)
 	
 	col9, col10 = st.columns(2)
-	image5 = Image.open('')
+	image5 = Image.open('ANGELA.jpeg')
 	col9.header("ANGELA VILLANUEVA")
 	col9.image(image5, use_column_width=True)
 	grayscale = image5.convert('LA')
