@@ -123,6 +123,7 @@ df_SEXO = pd.DataFrame(df_SEXO)
 df_SEXO = df_SEXO.reset_index()  
 df_SEXO.columns = ['SEXO', 'Total']
 
+import matplotlib.pyplot as plt
 fig1, ax1 = plt.subplots()
 ax1.pie(df_metododx['Total'], labels=df_SEXO['SEXO'], autopct='%1.1f%%')
 ax1.axis('equal')  
