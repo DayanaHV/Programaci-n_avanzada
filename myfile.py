@@ -108,7 +108,7 @@ def load_data(edad):
 	df_edad = grouped.get_group(edad)
 	return df_edad
 
-data_EDAD=load_data(str(select_edad))
+data_EDAD=load_data(str(edad_select))
 sorted_DEPARTAMENTO = sorted(data_EDAD.DEPARTAMENTO.unique())
 selected_departamento=st.sidebar.multiselect('Departamento', sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
 
