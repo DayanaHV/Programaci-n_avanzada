@@ -1,36 +1,33 @@
 #$ pip install streamlit --upgrade
+
+##################  LIBRERIA IMPORTADA  ##################################
 import urllib.request
 import streamlit as st
 import pandas as pd
 from PIL import Image
 import numpy as np
 
-
-#TITULO
+#TITULO "FALLECIDOS POR COVID-19"
 st.title('Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]')
 st.markdown("**PROYECTO FINAL PROGRAMACIÓN 2022-2**")
-#IMAGEN PORTADA
+
+#IMPORTAR LA IMAGEN DE PORTADA
 imagen_portada = Image.open('imagenportada.jpg')
 st.image(imagen_portada)
 
-#INTRODUCCIÓN
+#IMPORTAR IMAGEN QUE RESUMA LA INTRODUCCIÓN *elaboración propia de la imagen
 image_INTRODUCCION = Image.open('INTRODUCCION.jpg')
 st.image(image_INTRODUCCION)
 
-
-
 st.write("------------------------------------------------------------------------------------------------")
 
-
-
-
+#DESCRIPCIÓN DEL USO DE LA PAGINA WEB
 st.markdown("""
 	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
 	* **Base de datos:** [MINAM-Ministerio de Salud del Perú (https://www.datosabiertos.gob.pe/dataset/fallecidos-por-covid-19-ministerio-de-salud-minsa).
 	""")
 
-
-#CRITERIOS
+#DESCRIPCIÓN DE LOS CRITERIOS TECNICOS
 st.subheader("**CRITERIOS TECNICOS**")    
 st.write("""A partir del 31.mayo.2021 se cambió el criterio de “Fallecidos por Covid-19” por “Muertes por Covid-19” y como resultado el dataset creció casi al triple en el número de registros. Esta nueva clasificación está definida por el cumplimiento de al menos uno de los siguientes siete criterios técnicos:""")
 image_CRITERIOS = Image.open('CRITERIOS.jpg')
@@ -39,10 +36,11 @@ st.image(image_CRITERIOS)
 #CONTEXTO
 st.write("Con ese contexto, resulta necesario que el país cuente con un registro actualizado del número de personas fallecidas como consecuencia del COVID-19, que permita contar,en el menor tiempo posible con data que ayude a planificar, presupuestar y responder a la pandemia enfocándose en los grupos (sexo y edad) y/o zonas (departamento, provincia y distrito) más afectadas por la pandemia. Además, muestre el impacto que tuvo la pandemia y si las medidas de protección específicas, como la vacunación, están siendo efectivas.")
 
-#OBJETIVO:
+#OBJETIVO
 st.subheader("**OBJETIVO DE LA PAGINA**")   
 st.write("Facilitar la busqueda de datos relacionados a los fallecidos por covid-19 (sexo, edad, departamento, provincia, distrito y ubigeo) para conocer la magnitud del efecto.")
 
+#DESCRIPCIÓN DE kAS VARIABLES DE LA DATA
 st.subheader("**Variables de la data**") 
 st.markdown("""
 	* **FECHA CORTE** Fecha de corte de información.
@@ -75,6 +73,7 @@ st.markdown("""
 	* **DISTRITO:** Distrito donde reside la persona fallecida.
 	""")
 
+#DESCARGAR LA DATA
 st.header("DATA DE FALLECIDOS POR COVID-19")
 @st.experimental_memo
 def download_data():
@@ -82,25 +81,23 @@ def download_data():
    df=pd.read_csv("fallecidos_covid.csv")
    return df
 
+#DIMENSIONES Y CARACTERISTICA DE LA DATA
 c=download_data()
 st.write('**Dimensiones de la tabla:**') 
 st.write('* Fila: ' + str(c.shape[0]))
 st.write('* Columnas: ' + str(c.shape[1]))
 st.dataframe(c)
-
 st.subheader("Características del Dataset")
 st.write(c.describe())
-
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
 #ENTRADA DEL USUARIO
 st.sidebar.header("Entradas del usuario")
-#Filtro edad
-año_seleccionado=st.sidebar.selectbox('Edad_declarada', list(reversed(range(0,110))))
-#---------------------------------------------------------------------------------------------------
 
-#---------------------------------------------------------------------------------------------------------------------------------------------------------------
+#FILTRO DE RANGO DE EDAD_DECLARADA 
+edad_select=st.sidebar.selectbox('Edad_declarada', list(reversed(range(0,110))))
+
 def load_data(edad):
 	df = download_data()
 	df=df.astype({'EDAD_DECLARADA':'str'})
@@ -111,14 +108,14 @@ def load_data(edad):
 	df_edad = grouped.get_group(edad)
 	return df_edad
 
-data_año=load_data(str(año_seleccionado))
-sorted_unique_departamento = sorted(data_año.DEPARTAMENTO.unique())
-selected_departamento=st.sidebar.multiselect('Departamento', sorted_unique_departamento, sorted_unique_departamento)
+data_EDAD=load_data(str(select_edad))
+sorted_DEPARTAMENTO = sorted(data_EDAD.DEPARTAMENTO.unique())
+selected_departamento=st.sidebar.multiselect('Departamento', sorted_DEPARTAMENTO, sorted_DEPARTAMENTO)
 
 unique_data=['FECHA_CORTE', 'FECHA_FALLECIMIENTO', 'UUID']
 selected_data=st.sidebar.multiselect('Clasificación', unique_data, unique_data)
 
-df_selected=data_año[(data_año.DEPARTAMENTO.isin(selected_departamento))]
+df_selected=data_año[(data_EDAD.DEPARTAMENTO.isin(selected_departamento))]
 
 def remove_columns(dataset, cols):
 	return dataset.drop(cols, axis=1)
