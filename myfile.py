@@ -117,10 +117,10 @@ st.write('Numero de registros:', num_filas)
 #Gráficas
 
 #Gráfica de pie de METODODX
-df_metododx = df_distritos.METODODX.value_counts()
-df_metododx = pd.DataFrame(df_metododx)
-df_metododx = df_metododx.reset_index()  
-df_metododx.columns = ['SEXO', 'Total']
+df_SEXO = df_distritos.SEXO.value_counts()
+df_SEXO = pd.DataFrame(df_SEXO)
+df_SEXO = df_SEXO.reset_index()  
+df_SEXO.columns = ['SEXO', 'Total']
 
 fig1, ax1 = plt.subplots()
 ax1.pie(df_metododx['Total'], labels=df_metododx['METODODX'], autopct='%1.1f%%')
