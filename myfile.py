@@ -91,6 +91,11 @@ st.subheader("Características del Dataset")
 st.write(c.describe())
 
 
+set_departamentos = np.sort(df['DEPARTAMENTO'].dropna().unique())
+#Seleccion del departamento
+opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
+df_departamentos = df[df['DEPARTAMENTO'] == opcion_departamento]
+num_filas = len(df_departamentos.axes[0]) 
 
 
 #VIDEO DE YOUTUBE
