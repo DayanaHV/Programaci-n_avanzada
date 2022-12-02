@@ -205,7 +205,7 @@ if st.sidebar.button("¿Quiénes somos?"):
 	grayscale = image3.convert('LA')
 	col6.image(grayscale, use_column_width=True)
 	image4 = Image.open(' ')
-	col7.header("DAYANA ")
+	col7.header("DAYANA HERRERA")
 	col7.image(image4, use_column_width=True)
 	grayscale = image4.convert('LA')
 	col8.image(grayscale, use_column_width=True)
