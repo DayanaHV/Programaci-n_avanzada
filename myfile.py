@@ -115,7 +115,7 @@ selected_departamento=st.sidebar.multiselect('Departamento', sorted_DEPARTAMENTO
 unique_data=['FECHA_CORTE', 'FECHA_FALLECIMIENTO', 'UUID']
 selected_data=st.sidebar.multiselect('Clasificación', unique_data, unique_data)
 
-df_selected=data_año[(data_EDAD.DEPARTAMENTO.isin(selected_departamento))]
+df_selected=data_EDAD[(data_EDAD.DEPARTAMENTO.isin(selected_departamento))]
 
 def remove_columns(dataset, cols):
 	return dataset.drop(cols, axis=1)
