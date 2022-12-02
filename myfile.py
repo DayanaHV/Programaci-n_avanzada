@@ -91,43 +91,7 @@ st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
 
-st.write("------------------------------------------------------------------------------------------------------------------------------------")
 
-set_departamentos = np.sort(c['DEPARTAMENTO'].dropna().unique())
-#Seleccion del departamento
-opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
-df_departamentos = c[c['DEPARTAMENTO'] == opcion_departamento]
-num_filas = len(df_departamentos.axes[0]) 
-
-#Construccion del set/list de provincias (Valores unicos sin NA)
-set_provincias = np.sort(df_departamentos['PROVINCIA'].dropna().unique())
-
-#Seleccion de la provincia
-opcion_provincia = st.selectbox('Selecciona una provincia', set_provincias)
-df_provincias = df_departamentos[df_departamentos['PROVINCIA'] == opcion_provincia]
-num_filas = len(df_provincias.axes[0]) 
-
-set_distritos = np.sort(df_departamentos['DISTRITO'].dropna().unique())
-#Seleccion de la distrito
-opcion_distrito = st.selectbox('Selecciona un distrito', set_distritos)
-df_distritos = df_departamentos[df_departamentos['DISTRITO'] == opcion_distrito]
-num_filas = len(df_distritos.axes[0]) 
-
-st.write('Numero de registros:', num_filas)
-
-#Gráficas
-#Gráfica de barras de SEXO
-df_SEXO = df_distritos.SEXO.value_counts()
-st.write('Distribución por SEXO:')
-st.bar_chart(df_SEXO)
-
-#Gráfica de barras de EDAD
-df_edad = df_distritos.EDAD_DECLARADA.value_counts()
-st.write('Distribución por EDAD:')
-st.bar_chart(df_edad)
-
-
-st.write("------------------------------------------------------------------------------------------------------------------------------------")
 #------------------------------------------------------------------------------------------------------------------------------------
 #VIDEO DE YOUTUBE
 st.subheader("**VIDEO INFORMATIVO DE LA PROBLEMATICA**")    
@@ -184,6 +148,43 @@ selec_departamento= st.selectbox('Evaluación por departamento', departamento_na
 st.subheader("Departamento seleccionado:")
 st.subheader(str(selec_departamento))
 #-----------------------------------------------------------------------------------------------
+st.write("------------------------------------------------------------------------------------------------------------------------------------")
+
+set_departamentos = np.sort(c['DEPARTAMENTO'].dropna().unique())
+#Seleccion del departamento
+opcion_departamento = st.selectbox('Selecciona un departamento', set_departamentos)
+df_departamentos = c[c['DEPARTAMENTO'] == opcion_departamento]
+num_filas = len(df_departamentos.axes[0]) 
+
+#Construccion del set/list de provincias (Valores unicos sin NA)
+set_provincias = np.sort(df_departamentos['PROVINCIA'].dropna().unique())
+
+#Seleccion de la provincia
+opcion_provincia = st.selectbox('Selecciona una provincia', set_provincias)
+df_provincias = df_departamentos[df_departamentos['PROVINCIA'] == opcion_provincia]
+num_filas = len(df_provincias.axes[0]) 
+
+set_distritos = np.sort(df_departamentos['DISTRITO'].dropna().unique())
+#Seleccion de la distrito
+opcion_distrito = st.selectbox('Selecciona un distrito', set_distritos)
+df_distritos = df_departamentos[df_departamentos['DISTRITO'] == opcion_distrito]
+num_filas = len(df_distritos.axes[0]) 
+
+st.write('Numero de registros:', num_filas)
+
+#Gráficas
+#Gráfica de barras de SEXO
+df_SEXO = df_distritos.SEXO.value_counts()
+st.write('Distribución por SEXO:')
+st.bar_chart(df_SEXO)
+
+#Gráfica de barras de EDAD
+df_edad = df_distritos.EDAD_DECLARADA.value_counts()
+st.write('Distribución por EDAD:')
+st.bar_chart(df_edad)
+
+
+st.write("------------------------------------------------------------------------------------------------------------------------------------")
 
 if st.sidebar.button("¿Quiénes somos?"):
 	st.header("¿Quiénes somos?")
