@@ -92,7 +92,7 @@ st.write(c.describe())
 
 #------------------------------------------------------------------------------------------------------------------------------------
 st.set_page_config(layout='wide', initial_sidebar_state='expanded')
-with open('Logo.css) as f:
+with open('Logo.css') as f:
 	  st.markdown(f'<style>{(f.read()}</Logo>',unsafe_allow_html=True}
 #ENTRADA DEL USUARIO
 st.sidebar.header("Entradas del usuario")
