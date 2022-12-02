@@ -41,14 +41,6 @@ st.markdown("""
 	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
 	* **Base de datos:** [MINAM-Ministerio de Salud del Perú (https://www.datosabiertos.gob.pe/dataset/fallecidos-por-covid-19-ministerio-de-salud-minsa).
 	""")
-#DIMENSIONES Y CARACTERISTICA DE LA DATA
-c=download_data()
-st.write('**Dimensiones de la tabla:**') 
-st.write('* Fila: ' + str(c.shape[0]))
-st.write('* Columnas: ' + str(c.shape[1]))
-st.dataframe(c)
-st.subheader("Características del Dataset")
-st.write(c.describe())
 
 
 #DESCRIPCIÓN DE kAS VARIABLES DE LA DATA
@@ -92,6 +84,14 @@ def download_data():
    df=pd.read_csv("fallecidos_covid.csv")
    return df
 
+#DIMENSIONES Y CARACTERISTICA DE LA DATA
+c=download_data()
+st.write('**Dimensiones de la tabla:**') 
+st.write('* Fila: ' + str(c.shape[0]))
+st.write('* Columnas: ' + str(c.shape[1]))
+st.dataframe(c)
+st.subheader("Características del Dataset")
+st.write(c.describe())
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
