@@ -127,7 +127,6 @@ data=remove_columns(df_selected, cols)
 st.write('Dimensiones: ' + str(data.shape[0]) + ' filas y ' + str(data.shape[1]) + ' columnas')
 st.dataframe(data)
 
-#NO MODIFIQUEN NADAAAAAAAAAAAA HASTA AQUI NADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 #-----------------------------------------------------------------------------------------------
 st.write("------------------------------------------------------------------------------------------------------------------------------------")
@@ -219,5 +218,4 @@ if st.sidebar.button("¿Quiénes somos?"):
 	col10.image(grayscale, use_column_width=True)
 
 
-#Quien somos 
-st.write('**Quien somos:**') 
+
