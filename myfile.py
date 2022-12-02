@@ -90,6 +90,7 @@ st.dataframe(c)
 st.subheader("Características del Dataset")
 st.write(c.describe())
 
+st.write("------------------------------------------------------------------------------------------------------------------------------------")
 
 set_departamentos = np.sort(c['DEPARTAMENTO'].dropna().unique())
 #Seleccion del departamento
@@ -97,7 +98,16 @@ opcion_departamento = st.selectbox('Selecciona un departamento', set_departament
 df_departamentos = c[c['DEPARTAMENTO'] == opcion_departamento]
 num_filas = len(df_departamentos.axes[0]) 
 
+#Construccion del set/list de provincias (Valores unicos sin NA)
+set_provincias = np.sort(df_departamentos['PROVINCIA'].dropna().unique())
 
+#Seleccion de la provincia
+opcion_provincia = st.selectbox('Selecciona una provincia', set_provincias)
+df_provincias = df_departamentos[df_departamentos['PROVINCIA'] == opcion_provincia]
+num_filas = len(df_provincias.axes[0]) 
+
+st.write("------------------------------------------------------------------------------------------------------------------------------------")
+#------------------------------------------------------------------------------------------------------------------------------------
 #VIDEO DE YOUTUBE
 st.subheader("**VIDEO INFORMATIVO DE LA PROBLEMATICA**")    
 video_file = open('Coronavirus Covid-19_ Claves para entender la enfermedad y protegerse - Clínica Alemana.mp4', 'rb')
