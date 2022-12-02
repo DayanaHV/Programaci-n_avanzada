@@ -93,12 +93,6 @@ st.write(c.describe())
 
 
 #------------------------------------------------------------------------------------------------------------------------------------
-#VIDEO DE YOUTUBE
-st.subheader("**VIDEO INFORMATIVO DE LA PROBLEMATICA**")    
-video_file = open('Coronavirus Covid-19_ Claves para entender la enfermedad y protegerse - Clínica Alemana.mp4', 'rb')
-video_bytes = video_file.read()
-st.video(video_bytes)
-st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=vlzxSleRnmg")
 
 #ENTRADA DEL USUARIO
 st.sidebar.header("Entradas del usuario")
@@ -181,6 +175,16 @@ st.bar_chart(df_CLASIFICACION_DEF)
 
 
 st.write("------------------------------------------------------------------------------------------------------------------------------------")
+
+
+
+#VIDEO DE YOUTUBE
+st.subheader("**VIDEO INFORMATIVO DE LA PROBLEMATICA**")    
+video_file = open('Coronavirus Covid-19_ Claves para entender la enfermedad y protegerse - Clínica Alemana.mp4', 'rb')
+video_bytes = video_file.read()
+st.video(video_bytes)
+st.write("**Fuente**: Clínica Alemana. (2020). https://www.youtube.com/watch?v=vlzxSleRnmg")
+
 
 if st.sidebar.button("¿Quiénes somos?"):
 	st.header("¿Quiénes somos?")
