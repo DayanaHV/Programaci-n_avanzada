@@ -22,11 +22,6 @@ st.image(image_INTRODUCCION)
 
 st.write("------------------------------------------------------------------------------------------------")
 
-#DESCRIPCIÓN DEL USO DE LA PAGINA WEB
-st.markdown("""
-	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
-	* **Base de datos:** [MINAM-Ministerio de Salud del Perú (https://www.datosabiertos.gob.pe/dataset/fallecidos-por-covid-19-ministerio-de-salud-minsa).
-	""")
 
 #DESCRIPCIÓN DE LOS CRITERIOS TECNICOS
 st.subheader("**CRITERIOS TECNICOS**")    
@@ -40,6 +35,21 @@ st.write("Con ese contexto, resulta necesario que el país cuente con un registr
 #OBJETIVO
 st.subheader("**OBJETIVO DE LA PAGINA**")   
 st.write("Facilitar la busqueda de datos relacionados a los fallecidos por covid-19 (sexo, edad, departamento, provincia, distrito y ubigeo) para conocer la magnitud del efecto.")
+
+#DESCRIPCIÓN DEL USO DE LA PAGINA WEB
+st.markdown("""
+	Esta app permite al usuario visualizar los datos de fallecidos por COVID-19
+	* **Base de datos:** [MINAM-Ministerio de Salud del Perú (https://www.datosabiertos.gob.pe/dataset/fallecidos-por-covid-19-ministerio-de-salud-minsa).
+	""")
+#DIMENSIONES Y CARACTERISTICA DE LA DATA
+c=download_data()
+st.write('**Dimensiones de la tabla:**') 
+st.write('* Fila: ' + str(c.shape[0]))
+st.write('* Columnas: ' + str(c.shape[1]))
+st.dataframe(c)
+st.subheader("Características del Dataset")
+st.write(c.describe())
+
 
 #DESCRIPCIÓN DE kAS VARIABLES DE LA DATA
 st.subheader("**Variables de la data**") 
@@ -82,14 +92,6 @@ def download_data():
    df=pd.read_csv("fallecidos_covid.csv")
    return df
 
-#DIMENSIONES Y CARACTERISTICA DE LA DATA
-c=download_data()
-st.write('**Dimensiones de la tabla:**') 
-st.write('* Fila: ' + str(c.shape[0]))
-st.write('* Columnas: ' + str(c.shape[1]))
-st.dataframe(c)
-st.subheader("Características del Dataset")
-st.write(c.describe())
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
