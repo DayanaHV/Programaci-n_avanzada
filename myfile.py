@@ -193,7 +193,7 @@ if st.sidebar.button("¿Quiénes somos?"):
 	col1.image(image1, use_column_width=True)
 	grayscale = image1.convert('LA')
 	col2.image(grayscale, use_column_width=True)
-	image2 = Image.open('')
+	image2 = Image.open('ANDREA.jpeg')
 	col3.header("ANDREA ALBUJAR")
 	col3.image(image2, use_column_width=True)
 	grayscale = image2.convert('LA')
