@@ -188,7 +188,7 @@ if st.sidebar.button("¿Quiénes somos?"):
 	st.write("Somos un grupo de estudiantes de V ciclo de Ingeniería de la Universidad Peruano Cayetano Heredia (UPCH). Nos apasiona el procesamiento y visualización de datos medioambientales que puedan ayudar al público general a comprender mejor el problema de la contaminación del aire.")
 	
 	col1, col2, col3, col4 = st.columns(4)
-	image1 = Image.open('SebastianFranco.jpeg')
+	image1 = Image.open('')
 	col1.header("ELIZABETH CHAVEZ")
 	col1.image(image1, use_column_width=True)
 	grayscale = image1.convert('LA')
@@ -200,7 +200,7 @@ if st.sidebar.button("¿Quiénes somos?"):
 	col4.image(grayscale, use_column_width=True)
 	
 	col5, col6, col7, col8 = st.columns(4)
-	image3 = Image.open('')
+	image3 = Image.open('SebastianFranco.jpeg')
 	col5.header("SEBASTIAN ")
 	col5.image(image3, use_column_width=True)
 	grayscale = image3.convert('LA')
