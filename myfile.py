@@ -200,7 +200,7 @@ if st.sidebar.button("¿Quiénes somos?"):
 	
 	col5, col6, col7, col8 = st.columns(4)
 	image3 = Image.open('SebastianFranco.jpeg')
-	col5.header("SEBASTIAN ")
+	col5.header("SEBASTIAN FRANCO")
 	col5.image(image3, use_column_width=True)
 	grayscale = image3.convert('LA')
 	col6.image(grayscale, use_column_width=True)
