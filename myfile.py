@@ -183,6 +183,11 @@ df_edad = df_distritos.EDAD_DECLARADA.value_counts()
 st.write('Distribución por EDAD:')
 st.bar_chart(df_edad)
 
+#Gráfica de barras de CLASIFICACION_DEF
+df_CLASIFICACION_DEF = df_distritos.CLASIFICACION_DEF.value_counts()
+st.write('Distribución por CLASIFICACION_DEF:')
+st.bar_chart(df_CLASIFICACION_DEF)
+
 
 st.write("------------------------------------------------------------------------------------------------------------------------------------")
 
