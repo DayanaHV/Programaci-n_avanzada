@@ -7,9 +7,6 @@ import pandas as pd
 from PIL import Image
 import numpy as np
 
-st.set_page_config(layout='wide', initial_sidebar_state='expanded')
-with open('Logo.py') as f:
-	  st.markdown(f'<style>{f.read()}</Logo>', unsafe_allow_html=True)
 
 #TITULO "FALLECIDOS POR COVID-19"
 st.title('Fallecidos por COVID-19 - [Ministerio de Salud - MINSA]')
@@ -95,9 +92,7 @@ st.subheader("Características del Dataset")
 st.write(c.describe())
 
 #------------------------------------------------------------------------------------------------------------------------------------
-#st.set_page_config(layout='wide', initial_sidebar_state='expanded')
-#with open('Logo.css') as f:
-	 # st.markdown(f'<style>{f.read()}</Logo>', unsafe_allow_html=True)
+
 #ENTRADA DEL USUARIO
 st.sidebar.header("Entradas del usuario")
 #FILTRO DE RANGO DE EDAD_DECLARADA 
